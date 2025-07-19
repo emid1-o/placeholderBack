@@ -1,5 +1,6 @@
 package app.service;
 
+import app.entity.Artista;
 import app.entity.Musica;
 import app.repository.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,23 @@ public class MusicaService {
 
         Musica musica = this.musicaRepository.findById(id).get();
         return musica;
+    }
+
+    public List<Musica> findByNome(String nome){
+
+        return this.musicaRepository.findByNome(nome);
+    }
+
+
+    public List<Musica> findByArtista(Long id){
+
+        Artista artista = new Artista();
+        artista.setId(id);
+        return this.musicaRepository.findByArtista(artista);
+    }
+
+    public List<Musica> findAcimaAno(int ano){
+
+        return this.musicaRepository.findAcimaAno(ano);
     }
 }

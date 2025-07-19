@@ -82,5 +82,41 @@ public class MusicaController {
         }
     }
 
+    @GetMapping("/findByNome")
+    public ResponseEntity<List<Musica>> findByNome(@RequestParam String nome){
+
+        try {
+            List<Musica> lista = this.musicaService.findByNome(nome);
+            return new ResponseEntity<>(lista, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/findByArtista")
+    public ResponseEntity<List<Musica>> findByArtista(@RequestParam Long id){
+
+        try {
+            List<Musica> lista = this.musicaService.findByArtista(id);
+            return new ResponseEntity<>(lista, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/findAcimaAno")
+    public ResponseEntity<List<Musica>> findAcimaAno(@RequestParam int ano){
+
+        try {
+            List<Musica> lista = this.musicaService.findAcimaAno(ano);
+            return new ResponseEntity<>(lista, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
 }
